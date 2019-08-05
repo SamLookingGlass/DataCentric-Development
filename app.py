@@ -51,7 +51,7 @@ def upload():
         'image_url' : images_upload_set.url(filename),
         'image_name' : filename, 
         'image_caption' : caption,
-        'image_tags' : "test",
+        'image_tags' : tags,
         # 'uploaded_on' : db[PHOTOS._id].getTimestamp(),
         'deleted': 0,
         'deleted_on' : "null",

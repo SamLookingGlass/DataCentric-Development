@@ -51,18 +51,19 @@ $(".custom-file-input").on("change", function() {
         <th>File Type</th>
         <th>File Size (In Bytes)</th>
         <th>Photo</th>
+        <th>Edit</th>
     </tr>
     {% for d in data %}
     <tr>
         <td>{{ d['_id'] }} </td>
-        <td>{{ d['image_name'] }} <button class="btn btn-primary">Edit</button></td>
-        <td>{{ d['image_caption'] }}<button class="btn btn-primary">Edit</button></td>
-        <td>{{ d['image_tags'] }}<button class="btn btn-primary">Edit</button></td>
+        <td>{{ d['image_name'] }}</td>
+        <td>{{ d['image_caption'] }}</td>
+        <td>{{ d['image_tags'] }}</td>
         <td>{{ d['uploaded_on'] }}</td>
         <td>{{ d['file_type'] }}</td>
         <td>{{ d['file_size'] }}</td>
-        <td><img id="thumbnail" src=" {{ d['image_url'] }} " /><button class="btn btn-danger">Delete</button></td>
-
+        <td><img id="thumbnail" src=" {{ d['image_url'] }} " /></td>
+        <td><button class="btn btn-primary">Edit</button><button class="btn btn-danger">Delete</button></td>
     </tr>
     {% endfor %}
 </table>
