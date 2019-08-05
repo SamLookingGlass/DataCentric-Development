@@ -43,8 +43,10 @@ def photos():
 def upload():
     image = request.files.get('image')
     filename = images_upload_set.save(image)
+    filename_raw, file_extension = os.path.splitext(TOP_LEVEL_DIR + upload_dir + filename)
     filesize = os.path.getsize(TOP_LEVEL_DIR + upload_dir + filename)
     caption = request.form.get('caption')
+    tags = request.form.get('tags')
     db[PHOTOS].insert({
         'image_url' : images_upload_set.url(filename),
         'image_name' : filename, 
@@ -54,7 +56,7 @@ def upload():
         'deleted': 0,
         'deleted_on' : "null",
         'file_size' : filesize,
-        'file_type' : "Test",
+        'file_type' : file_extension,
         })
     return redirect(url_for('photos'))
     
