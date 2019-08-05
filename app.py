@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, get_flashed_messages
+from flask import Flask, render_template, request, redirect, url_for, flash, get_flashed_messages, jsonify
 import os
 import pymongo
+from bson.objectid import ObjectId
+from bson.json_util import dumps
 
 from flask_uploads import UploadSet, IMAGES, configure_uploads
 # from bson.json_util import dumpsb
@@ -44,12 +46,8 @@ def upload():
     
     db[PHOTOS].insert({
         'image_url' : images_upload_set.url(filename),
-        'image_name' : "Test", 
+        'image_name' : filename, 
         'image_caption' : "This is a caption test.",
-        '$currentDate' : {
-            'lastModified': True, 
-            'uploaded_on' : { "$type": "timestamp" }
-        },
         'image_tags' : "test",
         'deleted': 0,
         'deleted_on' : "null",
