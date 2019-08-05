@@ -42,8 +42,19 @@ def upload():
     image = request.files.get('image')
     filename = images_upload_set.save(image)
     
-    db[PHOTOS].insert_one({
-        'image_url': images_upload_set.url(filename)
+    db[PHOTOS].insert({
+        'image_url' : images_upload_set.url(filename),
+        'image_name' : "Test", 
+        'image_caption' : "This is a caption test.",
+        '$currentDate' : {
+            'lastModified': True, 
+            'uploaded_on' : { "$type": "timestamp" }
+        },
+        'image_tags' : "test",
+        'deleted': 0,
+        'deleted_on' : "null",
+        'file_size' : "test size",
+        'file_type' : "png or gif"
         })
     return redirect(url_for('photos'))
     
