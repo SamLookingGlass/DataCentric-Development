@@ -43,12 +43,13 @@ def photos():
 def upload():
     image = request.files.get('image')
     filename = images_upload_set.save(image)
-    
+    caption = request.form.get('caption')
     db[PHOTOS].insert({
         'image_url' : images_upload_set.url(filename),
         'image_name' : filename, 
-        'image_caption' : "This is a caption test.",
+        'image_caption' : caption,
         'image_tags' : "test",
+        # 'uploaded_on' : db[PHOTOS._id].getTimestamp(),
         'deleted': 0,
         'deleted_on' : "null",
         'file_size' : "test size",
