@@ -1,0 +1,23 @@
+{%extends "layout.html"%}
+
+
+{%block album %}
+    <table style="width:100%">
+    <tr>
+      <th>Album ID</th>
+      <th>Album Name</th> 
+      <th>Created On</th>
+      <th>Album Description</th>
+    </tr>
+    {% for d in data %}
+    <tr>
+        <td>{{ d['_id'] }} </td>
+        <td>{{ d['album_name'] }}</td>
+        <td>{{ d['created_on'] }}</td>
+        <td>{{ d['album_description'] }}</td>
+        
+    </tr>
+    {% endfor %}
+    </table>
+
+{%endblock %}

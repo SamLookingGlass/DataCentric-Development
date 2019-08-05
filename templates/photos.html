@@ -1,0 +1,60 @@
+{%extends "layout.html"%} 
+
+{%block photos %}
+<section>
+    <div class="container p-5">
+        <div class="row mb-5 text-center text-dark">
+            <div class="col-lg-12 mx-auto">
+                <h1 class="display-4">Upload Photos</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="p-5 bg-white shadow rounded-lg"><img src="https://res.cloudinary.com/mhmd/image/upload/v1557366994/img_epm3iz.png" alt="" width="200" class="d-block mx-auto mb-4 rounded-pill">
+
+                    <h6 class="text-center mb-4 text-muted">
+                        Upload your photos here.
+                    </h6>
+
+                    <form class="form custom-file rounded-pill mb-5" enctype="multipart/form-data" method="POST" action="{{url_for('upload')}}">
+                        <input id="customFile" type="file" class="custom-file-input rounded-pill" name="image">
+                        <label for="customFile" class="custom-file-label rounded-pill">Choose file</label>
+                        <input class="btn-primary" type="submit" value="Upload">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
+
+
+<table style="width:100%">
+    <tr>
+        <th>Photo ID</th>
+        <th>Photo Name</th>
+        <th>Caption</th>
+        <th>Tags</th>
+        <th>Photo</th>
+    </tr>
+    {% for d in data %}
+    <tr>
+        <td>{{ d['_id'] }} </td>
+        <td>{{ d['image_name'] }}</td>
+        <td>{{ d['image_caption'] }}</td>
+        <td>{{ d['image_tags'] }}</td>
+        <td><img id="thumbnail" src=" {{ d['image_url'] }} " /></td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+{%endblock %}
