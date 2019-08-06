@@ -20,7 +20,8 @@ images_upload_set = UploadSet("images", IMAGES)
 configure_uploads(app, images_upload_set)
 
 # Retrieve environment environment
-MONGO_URI = os.getenv('MONGO_URI')
+#MONGO_URI = os.getenv('MONGO_URI')
+MONGO_URI = os.environ['MONGO_URI']
 DATABASE_NAME = 'project_photogallery'
 ALBUMS = 'albums'
 PHOTOS = 'images'
