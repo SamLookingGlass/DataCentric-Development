@@ -3,10 +3,18 @@ import os
 import pymongo
 from bson.objectid import ObjectId
 from bson.json_util import dumps
+import time
 
 from flask_uploads import UploadSet, IMAGES, configure_uploads
 # from bson.json_util import dumpsb
 
+
+# Timestamp function
+def timestamp():
+  now = int(round(time.time()*1000))
+  time_now = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(now/1000))
+  return time_now
+  
 app = Flask(__name__)
 # create app route and test it
 TOP_LEVEL_DIR = os.path.abspath(os.curdir) 
@@ -20,8 +28,8 @@ images_upload_set = UploadSet("images", IMAGES)
 configure_uploads(app, images_upload_set)
 
 # Retrieve environment environment
-#MONGO_URI = os.getenv('MONGO_URI')
-MONGO_URI = os.environ['MONGOLAB_URI']
+MONGO_URI = os.getenv('MONGO_URI')
+#MONGO_URI = os.environ['MONGOLAB_URI']
 DATABASE_NAME = 'project_photogallery'
 ALBUMS = 'albums'
 PHOTOS = 'images'
@@ -44,7 +52,9 @@ def photos():
 def upload():
     image = request.files.get('image')
     filename = images_upload_set.save(image)
+    # Get file name and file extension
     filename_raw, file_extension = os.path.splitext(TOP_LEVEL_DIR + upload_dir + filename)
+    
     filesize = os.path.getsize(TOP_LEVEL_DIR + upload_dir + filename)
     caption = request.form.get('caption')
     tags = request.form.get('tags')
@@ -53,10 +63,12 @@ def upload():
         'image_name' : filename, 
         'image_caption' : caption,
         'image_tags' : tags,
-        # 'uploaded_on' : new Timestamp(),
+        'uploaded_on' : timestamp(),
         'deleted': 0,
         'deleted_on' : "null",
-        'file_size' : filesize,
+        # Converts filesize to mb 3sf
+        'file_size' : round((filesize/1000000),3),
+        
         'file_type' : file_extension,
         })
     return redirect(url_for('photos'))
@@ -70,3 +82,4 @@ if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
             debug=True)
+
