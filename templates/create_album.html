@@ -25,8 +25,17 @@
 
 {%block album %}
  {% for d in data %}
+    <tr>
         <td>{{ d['_id'] }} </td>
-        <td>{{ d['image_name'] }}</td>
+        <td>{{ d['album_name'] }}</td>
+        <td>{{ d['created_on'] }}</td>
+        <td>{{ d['album_description'] }}</td>
+        <td>{{ d['deleted_on'] }}</td>
+        <td>{{ d['deleted'] }}</td>
+        {% for i in image%}
+        <td>{{ d['image_id'] }}</td>
+        {% endfor %}
+    </tr>    
  {% endfor %}
 
 {%endblock %}

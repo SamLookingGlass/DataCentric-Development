@@ -1,6 +1,20 @@
 {%extends "layout.html"%} 
 
 {%block content %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+              {% if messages %}
+              <div class='alert alert-success'>
+                <ul class='flashes'>
+                   {% for message in messages %}
+                   <li>{{ message }}</li>
+                   {% endfor %}
+                </ul>
+                </div>
+             {% endif %}
+          {% endwith %}
+    </div>
+    
 <section>
     <div class="container p-5">
         <div class="row mb-5 text-center text-dark">
@@ -17,7 +31,7 @@
                         Upload your photos here.
                     </h6>
 
-                    <form class="form custom-file rounded-pill mb-5" enctype="multipart/form-data" method="POST" action="{{url_for('upload')}}">
+                    <form class="form custom-file rounded-pill mb-5" enctype="multipart/form-data" method="POST" action="{{url_for('process_upload_photos')}}">
                         <input id="customFile" type="file" class="custom-file-input rounded-pill" name="image">
                         <label for="customFile" class="custom-file-label rounded-pill">Choose file</label>
                         <label for="caption">Image Caption</label>
