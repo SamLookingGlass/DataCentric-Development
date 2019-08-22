@@ -1,6 +1,6 @@
 {%extends "layout.html"%} 
 
-{%block photos %}
+{%block content %}
 <section>
     <div class="container p-5">
         <div class="row mb-5 text-center text-dark">
@@ -63,7 +63,7 @@ $(".custom-file-input").on("change", function() {
         <td>{{ d['file_type'] }}</td>
         <td>{{ d['file_size'] }} Mb </td>
         <td><img id="thumbnail" src=" {{ d['image_url'] }} " /></td>
-        <td><button class="btn btn-primary">Edit</button><button class="btn btn-danger">Delete</button></td>
+        <td><label><input name="selection" type="checkbox" value="{{ d['_id'] }}">Delete</label></td>
     </tr>
     {% endfor %}
 </table>

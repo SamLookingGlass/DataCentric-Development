@@ -1,7 +1,7 @@
 {%extends "layout.html"%}
 
 
-{%block album %}
+{%block content %}
     <table style="width:100%">
     <tr>
       <th>Album ID</th>
@@ -19,5 +19,10 @@
     </tr>
     {% endfor %}
     </table>
+    
+    <button type="button" class="btn btn-danger">Create New Album</button>
+    <button type="button" class="btn btn-danger">Upload Photos</button>
+    <button type="button" class="btn btn-danger">View Albums</button>
+    
 
 {%endblock %}
