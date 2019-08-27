@@ -77,7 +77,6 @@ $(".custom-file-input").on("change", function() {
         <td>{{ d['file_type'] }}</td>
         <td>{{ d['file_size'] }} Mb </td>
         <td><img id="thumbnail" src=" {{ d['image_url'] }} " /></td>
-        <td><label><input name="selection" type="checkbox" value="{{ d['_id'] }}">Delete</label></td>
     </tr>
     {% endfor %}
 </table>

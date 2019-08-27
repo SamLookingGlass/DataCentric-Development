@@ -58,11 +58,18 @@ def photos():
     results = db[PHOTOS].find({})
     return render_template("photos.html", data = results)    
 
-# Function to display selected albums (Working)
+# Function to edit selected album (Currently)
 @app.route('/albums/<albumid>/edit')
-def display_selected_album(albumid):
+def edit_selected_album(albumid):
     selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
     return render_template("layout1edit.html", data = selected_album)
+    
+# Function to show contents of selected album (Currently)
+@app.route('/albums/<albumid>')
+def display_selected_album(albumid):
+    selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
+    results = db[PHOTOS].find({})
+    return render_template("layout1display.html", data = selected_album, photos = results)    
     
 
 # Function to show delete confirmation page (Working)
@@ -72,7 +79,7 @@ def display_delete_confirmation(albumid):
     return render_template("layout1delete.html", data = selected_album)
     
     
-# Route to process the soft delete (Currently)
+# Route to process the soft delete (Working)
 @app.route('/albums/<albumid>/delete')
 def process_delete_album(albumid):
     selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
@@ -89,7 +96,7 @@ def process_delete_album(albumid):
     
 
 
-# Route to process the upload 
+# Route to process the upload (Working)
 @app.route('/photos/upload', methods=['POST'])
 def process_upload_photos():
     # Extract fields from upload form
