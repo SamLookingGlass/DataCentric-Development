@@ -72,7 +72,7 @@ def display_delete_confirmation(albumid):
     return render_template("layout1delete.html", data = selected_album)
     
     
-# Route to process the soft delete
+# Route to process the soft delete (Currently)
 @app.route('/albums/<albumid>/delete')
 def process_delete_album(albumid):
     selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
@@ -85,7 +85,7 @@ def process_delete_album(albumid):
             }
         })
     flash("Album: {} has been deleted".format(selected_album['album_name']))
-    return redirect(url_for('display_selected_album'), data = selected_album)
+    return redirect(url_for('display_albums'))
     
 
 

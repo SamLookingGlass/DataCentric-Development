@@ -59,7 +59,9 @@
         <th>Delete</th>
     </tr>
     
-    {% for d in data%}
+    
+    {% for d in data %}
+    {% if d['deleted'] == '0' %}
     <tr>
         <td>{{ d['_id'] }}</td>
         <td>{{ d['created_on'] }}</td>
@@ -71,7 +73,9 @@
         <td><a href='{{ url_for('display_delete_confirmation', albumid=d['_id']) }}' class='btn btn-danger'>Delete</a></td>
     </tr>
     </table>
+    {% endif %}
     {% endfor %}
+
     {%endblock %}
     </div>
     

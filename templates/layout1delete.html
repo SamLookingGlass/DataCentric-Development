@@ -55,11 +55,11 @@
 
       <div class="col-sm-9">
         <div class='alert alert-danger'>
-          <form action='{{url_for('process_delete_album', albumid=data['_id']) }}'>
+          <form action='{{url_for('process_delete_album', albumid= data['_id']) }}'>
             Are you sure you want to delete task: {{ data['album_name'] }} ?
             <div>
               <input type='submit' class='btn btn-primary' value='Yes'>
-              <a href='{{ url_for('display_albums') }}' class='btn btn-primary'>No</a>
+              <a href='{{ url_for('display_albums', albumid= data['_id']) }}' class='btn btn-primary'>No</a>
             </div>
           </form>
 
