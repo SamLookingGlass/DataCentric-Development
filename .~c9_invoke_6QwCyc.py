@@ -58,36 +58,11 @@ def photos():
     results = db[PHOTOS].find({})
     return render_template("photos.html", data = results)    
 
-# Function to display selected albums (Working)
-@app.route('/albums/<albumid>/edit')
-def display_selected_album(albumid):
-    selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
-    return render_template("layout1edit.html", data = selected_album)
-    
-
-# Function to show delete confirmation page (Working)
-@app.route('/albums/<albumid>/confirm_delete')
-def display_delete_confirmation(albumid):
-    selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
-    return render_template("layout1delete.html", data = selected_album)
-    
-    
-# Route to process the soft delete
-@app.route('/albums/<albumid>/delete')
-def process_delete_album(albumid):
-    selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
-    db[ALBUMS].update(
-        {'_id':ObjectId(albumid)},
-        { '$set':
-            {
-                'deleted':'1',
-                'deleted_on': timestamp(),        
-            }
-        })
-    flash("Album: {} has been deleted".format(selected_album['album_name']))
-    return redirect(url_for('display_selected_album'), data = selected_album)
-    
-
+# Function to display selected albums (Currently)
+@app.route('/albums/edit')
+def display_selected_album():
+    selected_album = db[ALBUMS].find({})find({"_id": Object"5d3fc41e1c9d440000703bbd"})
+    return render_template("layout1edit.html", data = selected_album) 
 
 # Route to process the upload 
 @app.route('/photos/upload', methods=['POST'])
@@ -120,6 +95,21 @@ def process_upload_photos():
         flash("Please upload a photo before submitting.")
         return redirect(url_for('photos'))
 
+
+# Soft Delete (0 = not deleted, 1 = deleted)
+# @app.route('/photos/delete')
+# def delete():
+#     results = db[PHOTOS].find({})
+#     return render_template("delete.html", data = results) 
+#     # if request.method == 'POST':
+#     #     user_selected_file = request.form.getlist('selection')
+#     #     print(user_selected_file)
+
+#         # db[PHOTOS].update(
+#         #     {
+#         #         'deleted': 1,
+#         #         'deleted_on' : timestamp(),
+#         #     })
     
 # "magic code" -- boilerplate
 if __name__ == '__main__':

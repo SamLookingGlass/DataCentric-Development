@@ -50,28 +50,17 @@
     <table style="width:100%">
     <tr>
         <th>Album ID</th>
-        <th>Created On</th>
         <th>Album Name</th>
         <th>Description</th>
-        <th>Deleted?</th>
-        <th>Deleted On</th>
-        <th>image_id</th>
-        <th>Delete</th>
     </tr>
     
-    {% for d in data%}
     <tr>
-        <td>{{ d['_id'] }}</td>
-        <td>{{ d['created_on'] }}</td>
-        <td><a href='{{ url_for('display_selected_album', albumid=d['_id']) }}'>{{ d['album_name'] }}</a></td>
-        <td>{{ d['album_description']}}</td>
-        <td>{{ d['deleted']}}</td>
-        <td>{{ d['deleted_on'] }}</td>
-        <td>{{ d['images'] }}</td>
-        <td><a href='{{ url_for('display_delete_confirmation', albumid=d['_id']) }}' class='btn btn-danger'>Delete</a></td>
+        <td>{{ data['_id'] }}</td>
+        <td>{{ data['album_name'] }}</td>
+        <td>{{ data['album_description'] }}</td>
     </tr>
     </table>
-    {% endfor %}
+
     {%endblock %}
     </div>
     
