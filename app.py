@@ -58,13 +58,30 @@ def photos():
     results = db[PHOTOS].find({})
     return render_template("photos.html", data = results)    
 
-# Function to edit selected album (Currently)
-@app.route('/albums/<albumid>/edit')
+# Function to form to edit album (Currently)
+@app.route('/albums/<albumid>/edit_album')
 def edit_selected_album(albumid):
+    # album_name = request.form.get('album_name')
+    # album_description = request.form.get('album_description')
+    
     selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
+    
+    # db[ALBUMS].update(
+    #     {'_id':ObjectId(albumid)},
+    #     { '$set':
+    #         {
+    #             'album_name': album_name,
+    #             'album_description': album_description,
+    #             'edited_on': timestamp(),
+    #         }
+    #     })
+
+    # flash("Successfully edited.")
     return render_template("layout1edit.html", data = selected_album)
     
-# Function to show contents of selected album (Currently)
+    
+    
+# Function to show contents of selected album (Working)
 @app.route('/albums/<albumid>')
 def display_selected_album(albumid):
     selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})

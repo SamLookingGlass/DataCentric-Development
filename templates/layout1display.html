@@ -52,21 +52,27 @@
         <th>Album ID</th>
         <th>Album Name</th>
         <th>Description</th>
+        <th>Last Edited</th>
         <th>Images</th>
-        <th>Display Photos</th>
+        <th><a href='{{ url_for('edit_selected_album', albumid=data['_id']) }}' class='btn btn-primary'>Edit</a></th>
     </tr>
     
     <tr>
         <td>{{ data['_id'] }}</td>
         <td>{{ data['album_name'] }}</td>
         <td>{{ data['album_description'] }}</td>
+        <td>{{ data['edited_on'] }}</td>
         <td>{{ data['images'] }}</td>
-        {% for p in photos %}
+    </tr>
+    
+    <tr>
+      {% for p in photos %}
         {% if p['_id'] in data['images'] %}
-        <td><img id="thumbnail" src="{{ p['image_url'] }}"></img></td>
+        <td><img style="height: 40px; width: 60px;" src="{{ p['image_url'] }}"></img></td>
         {% endif %}
         {% endfor %}
     </tr>
+    
     </table>
 
     {%endblock %}

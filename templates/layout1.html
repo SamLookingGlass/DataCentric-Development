@@ -57,7 +57,6 @@
         <th>Deleted On</th>
         <th>Images</th>
         <th>Delete</th>
-        <th>Edit</th>
     </tr>
     
     
@@ -72,7 +71,6 @@
         <td>{{ d['deleted_on'] }}</td>
         <td>{{ d['images'] }}</td>
         <td><a href='{{ url_for('display_delete_confirmation', albumid=d['_id']) }}' class='btn btn-danger'>Delete</a></td>
-        <td><a href='{{ url_for('edit_selected_album', albumid=d['_id']) }}' class='btn btn-primary'>Edit</a></td>
     </tr>
     </table>
     {% endif %}

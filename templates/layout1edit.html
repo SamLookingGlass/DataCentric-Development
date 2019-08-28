@@ -36,33 +36,36 @@
 </head>
 <body>
 
+
+
 <div class="container-fluid">
+  
+  
   <div class="row content">
+    
     
     <div class="col-sm-3 sidenav">
      
     </div>
 
     <div class="col-sm-9">
-    {%block content %}
-    
-    
-    <table style="width:100%">
-    <tr>
-        <th>Album ID</th>
-        <th>Album Name</th>
-        <th>Description</th>
-    </tr>
-    
-    <tr>
-        <td>{{ data['_id'] }}</td>
-        <td>{{ data['album_name'] }}</td>
-        <td>{{ data['album_description'] }}</td>
-    </tr>
-    </table>
-
-    {%endblock %}
+    <form class="form">  
+    <div class='form-group'>
+      <label class='album_name'>Album Name:</label>
+      <input type='text' class='form-control' name='album_name' value="{{ data['album_name'] }}" />
     </div>
+    
+    <div class='form-group'>
+        <label class='album_description'>Album Description:</label>
+        <textarea class='form-control' name='album_description'>{{data['album_description']}}</textarea>
+    </div>
+    
+    <input type='submit' value='Update' class='btn btn-primary' />
+    <a href='{{ url_for('display_selected_album', albumid=data['_id']) }}' class='btn btn-primary'>Back</a>
+    </form>
+    
+    </div>
+    
     
   </div>
 </div>
