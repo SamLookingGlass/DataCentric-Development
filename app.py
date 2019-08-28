@@ -65,7 +65,7 @@ def edit_selected_album(albumid):
 
     return render_template("layout1edit.html", data = selected_album)
 
-# Function to process edits (Currently) 
+# Function to process edits (Working) 
 @app.route('/albums/<albumid>/edit_form', methods=['POST'])
 def process_edit_selected_album(albumid):
     album_name = request.form.get('Album_Name')
@@ -84,7 +84,31 @@ def process_edit_selected_album(albumid):
 
     flash("Successfully edited.")
     return redirect(url_for('display_selected_album', albumid = albumid))
-    
+
+# Function to create album (Working)
+@app.route('/albums/create_album_form')
+def create_album():
+    return render_template("layout1create.html")
+
+# Function to process creation of album (Currently) 
+@app.route('/albums/create_album_form', methods=['POST'])
+def process_create_album():
+    album_name = request.form.get('Album_Name')
+    album_description = request.form.get('Album_Description')
+    db[ALBUMS].insert({
+                'created_on': timestamp(),
+                'album_name' : album_name,
+                'album_description' : album_description,
+                'edited_on' : "Null",
+                'deleted': '0',
+                'deleted_on' : "Null",
+                'images' : "Array",
+                })
+    flash("Album successfully created.")
+    return redirect(url_for('display_albums'))
+
+
+
 # Function to show contents of selected album (Working)
 @app.route('/albums/<albumid>')
 def display_selected_album(albumid):
@@ -114,7 +138,6 @@ def process_delete_album(albumid):
         })
     flash("Album: {} has been deleted".format(selected_album['album_name']))
     return redirect(url_for('display_albums'))
-    
 
 
 # Route to process the upload (Working)

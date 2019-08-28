@@ -54,7 +54,10 @@
         <th>Description</th>
         <th>Last Edited</th>
         <th>Images</th>
-        <th><a href='{{ url_for('edit_selected_album', albumid=data['_id']) }}' class='btn btn-primary'>Edit</a></th>
+        <th>
+          <a href="{{ url_for('edit_selected_album', albumid=data['_id']) }}" class='btn btn-primary'>Edit</a>
+          <a href="{{ url_for('display_albums', albumid=data['_id']) }}" class='btn btn-primary '>Back</a>
+        </th>
     </tr>
     
     <tr>
