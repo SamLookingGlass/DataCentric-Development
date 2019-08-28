@@ -58,28 +58,32 @@ def photos():
     results = db[PHOTOS].find({})
     return render_template("photos.html", data = results)    
 
-# Function to form to edit album (Currently)
-@app.route('/albums/<albumid>/edit_album')
+# Function to form to edit album (Working)
+@app.route('/albums/<albumid>/edit_form')
 def edit_selected_album(albumid):
-    # album_name = request.form.get('album_name')
-    # album_description = request.form.get('album_description')
+    selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
+
+    return render_template("layout1edit.html", data = selected_album)
+
+# Function to process edits (Currently) 
+@app.route('/albums/<albumid>/edit_form', methods=['POST'])
+def process_edit_selected_album(albumid):
+    album_name = request.form.get('Album_Name')
+    album_description = request.form.get('Album_Description')
     
     selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
-    
-    # db[ALBUMS].update(
-    #     {'_id':ObjectId(albumid)},
-    #     { '$set':
-    #         {
-    #             'album_name': album_name,
-    #             'album_description': album_description,
-    #             'edited_on': timestamp(),
-    #         }
-    #     })
+    db[ALBUMS].update(
+        {'_id':ObjectId(albumid)},
+        { '$set':
+            {
+                'album_name': album_name,
+                'album_description': album_description,
+                'edited_on': timestamp(),
+            }
+        })
 
-    # flash("Successfully edited.")
-    return render_template("layout1edit.html", data = selected_album)
-    
-    
+    flash("Successfully edited.")
+    return redirect(url_for('display_selected_album', albumid = albumid))
     
 # Function to show contents of selected album (Working)
 @app.route('/albums/<albumid>')
