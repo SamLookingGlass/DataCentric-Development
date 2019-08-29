@@ -43,14 +43,13 @@ def index():
     messages = get_flashed_messages()
     print(messages)
     results = db[ALBUMS].find({})
-    # print(dumps(results))
     return render_template("index.html", data = results)
 
 # Function to display albums (Working)
 @app.route('/albums')
 def display_albums():
     albums = db[ALBUMS].find({})
-    return render_template('layout1.html',data = albums)
+    return render_template('display_albums.html',data = albums)
 
 # Route to show the page for uploading (Working)
 @app.route('/photos')
@@ -93,8 +92,8 @@ def create_album():
 # Function to process creation of album (Currently) 
 @app.route('/albums/create_album_form', methods=['POST'])
 def process_create_album():
-    album_name = request.form.get('Album_Name')
-    album_description = request.form.get('Album_Description')
+    album_name = str(request.form.get('Album_Name'))
+    album_description = str(request.form.get('Album_Description'))
     db[ALBUMS].insert({
                 'created_on': timestamp(),
                 'album_name' : album_name,
@@ -102,7 +101,7 @@ def process_create_album():
                 'edited_on' : "Null",
                 'deleted': '0',
                 'deleted_on' : "Null",
-                'images' : "Array",
+                'images' : [],
                 })
     flash("Album successfully created.")
     return redirect(url_for('display_albums'))

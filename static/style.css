@@ -15,6 +15,11 @@ img#thumbnail {
   display: none;
 }
 
+/*Navbar*/
+.navcolor {
+  background-color: yellow
+}
+
 /*
 *
 * ==========================================

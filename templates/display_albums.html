@@ -2,7 +2,7 @@
 
 {%block content %}
 
- <div class="container-fluid">
+  <div class="container-fluid">
     <div class="row content">
 
       <div class="col-sm-12">
@@ -22,8 +22,6 @@
             </th>
           </tr>
           </thead>
-
-          
           
           <tbody>
           {% for d in data %} {% if d['deleted'] == '0' %}
@@ -44,7 +42,8 @@
         </table>
       </div>
 
+
     </div>
   </div>
-  
-{%endblock %}  
+
+{%endblock %}
