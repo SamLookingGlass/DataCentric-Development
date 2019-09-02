@@ -62,7 +62,7 @@ def display_uploads_page():
 @app.route('/albums/<albumid>/edit_form')
 def edit_selected_album(albumid):
     selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
-    return render_template("layout1edit.html", data = selected_album)
+    return render_template("edit_album.html", data = selected_album)
 
 # Function to process edits (Working) 
 @app.route('/albums/<albumid>/edit_form', methods=['POST'])
@@ -116,7 +116,7 @@ def process_edit_selected_photo(photoid):
 # Function to create album (Working)
 @app.route('/albums/create_album_form')
 def create_album():
-    return render_template("layout1create.html")
+    return render_template("create_album.html")
 
 # Function to process creation of album (Working) 
 @app.route('/albums/create_album_form', methods=['POST'])
@@ -140,14 +140,14 @@ def process_create_album():
 def display_selected_album(albumid):
     selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
     results = db[PHOTOS].find({})
-    return render_template("layout1display.html", data = selected_album, photos = results)    
+    return render_template("display_selected_album.html", data = selected_album, photos = results)    
     
 
 # Function to show delete confirmation page for album (Working)
 @app.route('/albums/<albumid>/confirm_delete')
 def display_delete_confirmation(albumid):
     selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
-    return render_template("layout1delete.html", data = selected_album)
+    return render_template("delete_album.html", data = selected_album)
     
     
 # Route to process the soft delete of album (Working)
@@ -172,7 +172,7 @@ def display_delete_confirmation_photo(photoid):
     return render_template("delete_file.html", data = selected_photo)
     
     
-# Route to process the soft delete of photo (Currently)
+# Route to process the soft delete of photo (Working)
 @app.route('/photos/delete/<photoid>')
 def process_delete_photo(photoid):
     selected_photo = db[PHOTOS].find_one({"_id": ObjectId(photoid)})
