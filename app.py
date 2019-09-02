@@ -165,7 +165,7 @@ def process_delete_album(albumid):
     flash("Album: {} has been deleted".format(selected_album['album_name']))
     return redirect(url_for('display_albums'))
 
-# Function to show delete confirmation page for photo (Currently)
+# Function to show delete confirmation page for photo (Working)
 @app.route('/photo/confirm_delete/<photoid>')
 def display_delete_confirmation_photo(photoid):
     selected_photo = db[PHOTOS].find_one({"_id": ObjectId(photoid)})
@@ -174,18 +174,19 @@ def display_delete_confirmation_photo(photoid):
     
 # Route to process the soft delete of photo (Currently)
 @app.route('/photos/delete/<photoid>')
-def process_delete_photo(albumid):
-    selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
-    db[ALBUMS].update(
-        {'_id':ObjectId(albumid)},
+def process_delete_photo(photoid):
+    selected_photo = db[PHOTOS].find_one({"_id": ObjectId(photoid)})
+    db[PHOTOS].update(
+        {'_id':ObjectId(photoid)},
         { '$set':
             {
                 'deleted':'1',
                 'deleted_on': timestamp(),        
             }
         })
-    flash("Album: {} has been deleted".format(selected_album['album_name']))
-    return redirect(url_for('display_albums'))
+    flash("Photo: {} has been deleted".format(selected_photo['image_name']))
+    results = db[ALBUMS].find({})
+    return render_template("display_albums.html", data = results)
     
 
 # Route to process the upload (Working)

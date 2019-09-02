@@ -9,7 +9,8 @@
       <div class="container">
         <div class="row">
           {% for p in photos %}
-          {% if p['album_uploaded_to'] in data['album_name'] %}
+          {% if p['album_uploaded_to'] in data['album_name'] %} 
+          {% if not p['deleted'] == '1' %} 
            <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
               <img class="card-img-top" src="{{ p['image_url'] }}" alt="{{ p['image_name'] }}">
@@ -28,7 +29,9 @@
               </div>
             </div>
           </div>
-          {% endif %} {% endfor %}
+          {% endif %}
+          {% endif %} 
+          {% endfor %}
         </div>
       </div>
     </div>    
