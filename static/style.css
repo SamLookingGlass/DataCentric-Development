@@ -3,16 +3,15 @@ img#thumbnail {
     width: 60px;
 }
 
-
 .file-upload input[type='file'] {
   display: none;
 }
 
 
-
 body {
     height: 100vh;
-    background-image: url("/static/images/background.jpg");
+    background-image: url("/static/images/background1.jpg");
+    background-size: 100%;
 }
 
 .rounded-lg {
@@ -27,41 +26,7 @@ body {
   border-radius: 0 50rem 50rem 0;
 }
 
-#videobg {
-    z-index: -1;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 120%;
-}
-
-@media (min-aspect-ratio: 16/9) {
-    #videobg {
-        width: 100%;
-        height: auto;
-    }
-}
-
-@media (min-aspect-ratio: 16/9) {
-    #videobg {
-        width: auto;
-        height: 100%;
-    }
-}
-
-/*edit size*/
-
-@media (max-width: 200px) {
-    #videobg {
-        display: none;
-    }
-    body {
-        background: url("");
-        background-size: cover;
-    }
-}
 
 .footerdesign {
-    background-color: grey; 
+    background-color: black; 
 }
