@@ -46,3 +46,38 @@ body {
 .custom-file-label.rounded-pill::after {
   border-radius: 0 50rem 50rem 0;
 }
+
+#videobg {
+    z-index: -1;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 120%;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    #videobg {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (min-aspect-ratio: 16/9) {
+    #videobg {
+        width: auto;
+        height: 100%;
+    }
+}
+
+/*edit size*/
+
+@media (max-width: 200px) {
+    #videobg {
+        display: none;
+    }
+    body {
+        background: url("");
+        background-size: cover;
+    }
+}

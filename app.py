@@ -52,10 +52,10 @@ def display_albums():
     return render_template('display_albums.html',data = albums)
 
 # Route to show the page for uploading (Working)
-@app.route('/photos')
-def photos():
+@app.route('/uploads')
+def display_uploads_page():
     results = db[PHOTOS].find({})
-    return render_template("photos.html", data = results)    
+    return render_template("uploads.html", data = results)    
 
 # Function to form to edit album (Working)
 @app.route('/albums/<albumid>/edit_form')
@@ -140,7 +140,7 @@ def process_delete_album(albumid):
 
 
 # Route to process the upload (Working)
-@app.route('/photos/upload', methods=['POST'])
+@app.route('/uploads/uploading', methods=['POST'])
 def process_upload_photos():
     # Extract fields from upload form
     image = request.files.get('image')
@@ -151,24 +151,25 @@ def process_upload_photos():
     caption = request.form.get('caption')
     tags = request.form.get('tags')
     # Validation check to see if any file has been uploaded before POSTing to database
-    if filename is not None:
-        db[PHOTOS].insert({
-            'image_url' : images_upload_set.url(filename),
-            'image_name' : filename, 
-            'image_caption' : caption,
-            'image_tags' : tags,
-            'uploaded_on' : timestamp(),
-            'deleted': 0,
-            'deleted_on' : "null",
-            # Converts filesize to mb 3sf
-            'file_size' : round((filesize/1000000),3),
-            'file_type' : file_extension,
-            })
-        flash("Images have been uploaded successfully.")    
-        return redirect(url_for('photos'))
-    else:
-        flash("Please upload a photo before submitting.")
-        return redirect(url_for('photos'))
+    while True:
+            if "image" in request.file:
+                db[PHOTOS].insert({
+                    'image_url' : images_upload_set.url(filename),
+                    'image_name' : filename, 
+                    'image_caption' : caption,
+                    'image_tags' : tags,
+                    'uploaded_on' : timestamp(),
+                    'deleted': 0,
+                    'deleted_on' : "null",
+                    # Converts filesize to mb 3sf
+                    'file_size' : round((filesize/1000000),3),
+                    'file_type' : file_extension,
+                    })
+                flash("Image have been uploaded successfully.")    
+                return redirect(url_for('display_uploads_page'))
+            else:
+                flash("Please upload a photo before submitting.")
+                return redirect(url_for('display_uploads_page'))
 
     
 # "magic code" -- boilerplate

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-    <title>Bananarama - Photo Journal</title>
+    <title>Banarama - Photo Album</title>
 
     <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -19,6 +19,9 @@
   <!-- Own JavaScript -->
   <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
   
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
   </head>
 
   <body>
@@ -29,7 +32,7 @@
           <div class="row">
             <div class="col-sm-8 col-md-7 py-4">
               <h4 class="text-white">Photo Journal</h4>
-              <p class="text-muted">Welcome to Bananarama! This web application has been designed as an online photo journal where you can create your own album and upload your photos and share them with anyone. </p>
+              <p class="text-muted">Welcome to Banarama! This web application has been designed as an online photo journal where you can create your own album and upload your photos and share them with anyone. </p>
             </div>
             <div class="col-sm-4 offset-md-1 py-4">
               <h4 class="text-white">Contact</h4>
@@ -44,9 +47,9 @@
       </div>
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container d-flex justify-content-between">
-          <a href="#" class="navbar-brand d-flex align-items-center">
+          <a href="{{ url_for('index') }}" class="navbar-brand d-flex align-items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            <strong>Bananarama</strong>
+            <strong>Banarama</strong>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -56,30 +59,35 @@
     </header>
 
     <main role="main">
-
+      
+      <!--<video id="videobg" autoplay muted loop>-->
+      <!--      <source src="/static/videos/bananavid.mp4" type="video/mp4">-->
+      <!--    </video>-->
+          
       <section class="jumbotron text-center">
         <div class="container">
-          <h1 class="jumbotron-heading">Welcome to Bananarama,</h1>
+          <h1 class="jumbotron-heading">Welcome to Banarama,</h1>
           <p class="lead text-muted">This web application has been designed as an online photo journal where you can create your own album and upload your photos and share them with anyone.</p>
           <p>
-            <a href="#" class="btn btn-primary my-2">Create an Album</a>
-            <a href="#" class="btn btn-secondary my-2">Upload photos</a>
+            <a href='{{ url_for('create_album') }}' class="btn btn-info my-2"><i class="fa fa-hand-peace-o"></i><br>Create an Album</a>
+            <a href='{{ url_for('display_uploads_page') }}' class="btn btn-info my-2"><i class="fa fa-cloud-upload"></i><br>Upload photos</a>
+            <a href='{{ url_for('display_albums') }}' class="btn btn-info my-2"><i class="fa fa-folder"></i><br>View Albums</a>
           </p>
         </div>
       </section>
-
-     
+    </main>
+    
+    <section> 
 {%block content %}{%endblock %}     
      
-    </main>
+    </section>
 
     <footer class="text-muted">
       <div class="container">
         <p class="float-right">
           <a href="#">Back to top</a>
         </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+        <p>Designed by Sam Tan</p>
       </div>
     </footer>
 

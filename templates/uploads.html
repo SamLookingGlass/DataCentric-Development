@@ -17,28 +17,37 @@
     
 <section>
     <div class="container p-5">
-        <div class="row mb-5 text-center text-dark">
-            <div class="col-lg-12 mx-auto">
-                <h1 class="display-4">Upload Photos</h1>
-            </div>
-        </div>
-
         <div class="row">
+            
             <div class="col-lg-8 mx-auto">
-                <div class="p-5 bg-white shadow rounded-lg"><img src="https://res.cloudinary.com/mhmd/image/upload/v1557366994/img_epm3iz.png" alt="" width="200" class="d-block mx-auto mb-4 rounded-pill">
-
+                
+                <div class="p-5 bg-white shadow rounded-lg">
+                    <div class="row mb-5 text-center text-dark">
+                        <div class="col-lg-12 mx-auto">
+                            <h1 class="display-4" style="font-weight:bolder">Upload Photos</h1>
+                        </div>
+                    </div>
+                    
+                    <img src="/static/images/banana.gif" alt="animated bananas" width="300" class="d-block mx-auto mb-4 rounded-pill">
+                       
                     <h6 class="text-center mb-4 text-muted">
-                        Upload your photos here.
+                        "Browse" to select your file and click to "Upload" to upload!
                     </h6>
 
                     <form class="form custom-file rounded-pill mb-5" enctype="multipart/form-data" method="POST" action="{{url_for('process_upload_photos')}}">
                         <input id="customFile" type="file" class="custom-file-input rounded-pill" name="image">
                         <label for="customFile" class="custom-file-label rounded-pill">Choose file</label>
-                        <label for="caption">Image Caption</label>
-                        <input id="caption" type="textarea" name="caption">
-                        <label for="tags">Tags</label>
-                        <input id="tags" type="textarea" name="tags">        
-                        <input class="btn-primary" type="submit" value="Upload">
+                        <hr>
+                        <label for="caption">Image Caption: </label>
+                        <br>
+                        <input id="caption" class="rounded-pill border border-info form-control" type="textarea" name="caption" placeholder="Give your photo a caption.">
+                        <br>
+                        <label for="tags">Tags: </label>
+                        <br>
+                        <input id="tags" type="textarea" name="tags" class="rounded-pill border border-info form-control" placeholder="#amazing (Come on, you know you want to hashtag this.)">        
+                        <br>
+                        <hr>
+                        <input class="btn btn-primary" type="submit" value="Upload">
                     </form>
                 </div>
             </div>
