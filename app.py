@@ -102,7 +102,6 @@ def process_create_album():
                 'edited_on' : "Null",
                 'deleted': '0',
                 'deleted_on' : "Null",
-                'images' : [],
                 })
     flash("Album successfully created.")
     return redirect(url_for('display_albums'))
@@ -151,27 +150,23 @@ def process_upload_photos():
     filesize = os.path.getsize(TOP_LEVEL_DIR + upload_dir + filename)
     caption = request.form.get('caption')
     tags = request.form.get('tags')
-    # Validation check to see if any file has been uploaded before POSTing to database
-    while True:
-            if "image" in request.file:
-                db[PHOTOS].insert({
-                    'image_url' : images_upload_set.url(filename),
-                    'image_name' : filename, 
-                    'image_caption' : caption,
-                    'image_tags' : tags,
-                    'uploaded_on' : timestamp(),
-                    'deleted': 0,
-                    'deleted_on' : "null",
-                    # Converts filesize to mb 3sf
-                    'file_size' : round((filesize/1000000),3),
-                    'file_type' : file_extension,
-                    })
-                flash("Image have been uploaded successfully.")    
-                return redirect(url_for('display_uploads_page'))
-            else:
-                flash("Please upload a photo before submitting.")
-                return redirect(url_for('display_uploads_page'))
-
+    select = request.form.get('album_selected')
+    db[PHOTOS].insert({
+        'image_url' : images_upload_set.url(filename),
+        'image_name' : filename, 
+        'image_caption' : caption,
+        'image_tags' : tags,
+        'uploaded_on' : timestamp(),
+        'deleted': 0,
+        'deleted_on' : "null",
+        # Converts filesize to mb 3sf
+        'file_size' : round((filesize/1000000),3),
+        'file_type' : file_extension,
+        'album_uploaded_to' : select,
+        })
+    flash("Image have been uploaded successfully.")    
+    return redirect(url_for('display_uploads_page'))
+    
     
 # "magic code" -- boilerplate
 if __name__ == '__main__':
