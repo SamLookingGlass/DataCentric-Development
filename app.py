@@ -90,32 +90,34 @@ def edit_selected_photo(photoid):
     selected_photo = db[PHOTOS].find_one({"_id": ObjectId(photoid)})
     return render_template("edit_photo.html", data = selected_photo)
 
-# Function to process edits (Currently) 
-@app.route('/albums/<albumid>/edit_form', methods=['POST'])
+# Function to process edit of photo fields (Working) 
+@app.route('/photo/edit_form/<photoid>', methods=['POST'])
 def process_edit_selected_photo(photoid):
-    album_name = request.form.get('Album_Name')
-    album_description = request.form.get('Album_Description')
+    image_name = request.form.get('Image_Name')
+    image_caption = request.form.get('Image_Caption')
+    image_tag = request.form.get('Image_Tag')
     
-    selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
-    db[ALBUMS].update(
-        {'_id':ObjectId(albumid)},
+    selected_photo = db[PHOTOS].find_one({"_id": ObjectId(photoid)})
+    db[PHOTOS].update(
+        {'_id':ObjectId(photoid)},
         { '$set':
             {
-                'album_name': album_name,
-                'album_description': album_description,
+                'image_name': image_name,
+                'image_caption': image_caption,
+                'image_tag': image_tag,
                 'edited_on': timestamp(),
             }
         })
 
     flash("Successfully edited.")
-    return redirect(url_for('display_albums', albumid = albumid))    
+    return render_template("display_albums.html") #Bug Does not return to page displaying all albums   
 
 # Function to create album (Working)
 @app.route('/albums/create_album_form')
 def create_album():
     return render_template("layout1create.html")
 
-# Function to process creation of album (Currently) 
+# Function to process creation of album (Working) 
 @app.route('/albums/create_album_form', methods=['POST'])
 def process_create_album():
     album_name = str(request.form.get('Album_Name'))
