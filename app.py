@@ -83,7 +83,7 @@ def process_edit_selected_album(albumid):
         })
 
     flash("Successfully edited.")
-    return redirect(url_for('display_selected_album', albumid = albumid))
+    return redirect(url_for('display_albums', albumid = albumid))
 
 # Function to create album (Working)
 @app.route('/albums/create_album_form')

@@ -7,7 +7,7 @@
       <div class="col-sm-12">
         <form class="form"  method='POST'>
           <input type='submit' value='Update' class='btn btn-primary' />
-          <a href="{{ url_for('display_selected_album', albumid=data['_id']) }}" class='btn btn-primary'>Back</a>
+          <a href="{{ url_for('display_albums', albumid=data['_id']) }}" class='btn btn-primary'>Back</a>
           <hr>
           <div class='form-group'>
             <label class='Album_Name '>Album Name:</label>
