@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+    {%block content %}
+    
+  <div class="container-fluid" style="margin-bottom:40px">
+    <div class="row content">
+    
+      <div class="col-sm-12">
+        <div class='alert alert-danger'>
+          <form action='{{url_for('process_delete_photo', photoid= data['_id']) }}'>
+            <strong>Are you sure you want to delete the file "{{ data['image_name'] }}" ?</strong>
+            <hr>
+            <div>
+              <input type='submit' class='btn btn-danger' value='Yes'>
+
+            </div>
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>  
+  
+    {% endblock %}
+

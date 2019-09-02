@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{%block content %}
+
+  <div class="container-fluid" style="margin-bottom: 50px">
+    <div class="row content">
+      <div class="col-sm-12">
+        <form class="form"  method='POST'>
+          <input type='submit' value='Update' class='btn btn-primary' />
+          <a href="/" class='btn btn-primary'>Back</a>
+          <hr>
+          <div class='form-group'>
+            <label class='Image_Name'>Image Name:</label>
+            <input type='text' class='form-control' name='Image_Name' value="{{ data['image_name'] }}" />
+          </div>
+
+          <div class='form-group'>
+            <label class='Image_Caption'>Image Caption:</label>
+            <textarea class='form-control' name='Image_Caption'>{{data['image_caption']}}</textarea>
+          </div>
+          
+          <div class='form-group'>
+            <label class='Image_Tag'>Image Tag:</label>
+            <textarea class='form-control' name='Image_Tag'>{{data['image_tags']}}</textarea>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
