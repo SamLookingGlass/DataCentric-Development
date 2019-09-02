@@ -2,19 +2,19 @@
 
     {%block content %}
     
-  <div class="container-fluid">
+  <div class="container-fluid" style="margin-bottom: 50px">
     <div class="row content">
+      <a href="{{ url_for('edit_selected_album', albumid=data['_id']) }}" class='btn btn-primary'>Edit</a>
+      <a href="{{ url_for('display_albums', albumid=data['_id']) }}" class='btn btn-primary '>Back</a>
+      <hr>
       <table style="width:100%">
-        
         <tr>
             <th>Album ID</th>
             <th>Album Name</th>
             <th>Description</th>
             <th>Last Edited</th>
             <th>Images</th>
-            <th>
-              <a href="{{ url_for('edit_selected_album', albumid=data['_id']) }}" class='btn btn-primary'>Edit</a>
-              <a href="{{ url_for('display_albums', albumid=data['_id']) }}" class='btn btn-primary '>Back</a>
+            <th>Delete
             </th>
         </tr>
         
@@ -37,6 +37,34 @@
       </table>
     </div>
   </div>
+    
+    
+    <br>
+    <table style="width:100%">
+    <tr>
+        <th>Photo ID</th>
+        <th>Photo Name</th>
+        <th>Caption</th>
+        <th>Tags</th>
+        <th>Timestamp</th>
+        <th>File Type</th>
+        <th>File Size (In Megabytes)</th>
+        <th>Photo</th>
+        <th>Edit</th>
+    </tr>
+    {% for d in data %}
+    <tr>
+        <td>{{ d['_id'] }} </td>
+        <td>{{ d['image_name'] }}</td>
+        <td>{{ d['image_caption'] }}</td>
+        <td>{{ d['image_tags'] }}</td>
+        <td>{{ d['uploaded_on'] }}</td>
+        <td>{{ d['file_type'] }}</td>
+        <td>{{ d['file_size'] }} Mb </td>
+        <td><img id="thumbnail" src=" {{ d['image_url'] }} " /></td>
+    </tr>
+    {% endfor %}
+</table>
     
     {%endblock %}
     

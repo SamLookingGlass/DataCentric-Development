@@ -54,8 +54,9 @@ def display_albums():
 # Route to show the page for uploading (Working)
 @app.route('/uploads')
 def display_uploads_page():
-    results = db[PHOTOS].find({})
-    return render_template("uploads.html", data = results)    
+    results = db[ALBUMS].find({})
+    results1 = db[PHOTOS].find({})
+    return render_template("uploads.html", data = results, photos = results1)    
 
 # Function to form to edit album (Working)
 @app.route('/albums/<albumid>/edit_form')

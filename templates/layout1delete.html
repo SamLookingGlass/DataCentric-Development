@@ -8,9 +8,10 @@
       <div class="col-sm-12">
         <div class='alert alert-danger'>
           <form action='{{url_for('process_delete_album', albumid= data['_id']) }}'>
-            Are you sure you want to delete the ablum: {{ data['album_name'] }} ?
+            <strong>Are you sure you want to delete the album "{{ data['album_name'] }}" ?</strong>
+            <hr>
             <div>
-              <input type='submit' class='btn btn-primary' value='Yes'>
+              <input type='submit' class='btn btn-danger' value='Yes'>
               <a href='{{ url_for('display_albums', albumid= data['_id']) }}' class='btn btn-primary'>No</a>
             </div>
           </form>

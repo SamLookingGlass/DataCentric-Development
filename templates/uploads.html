@@ -1,19 +1,6 @@
 {%extends "layout.html"%} 
 
 {%block content %}
-    <div class="container">
-        {% with messages = get_flashed_messages() %}
-              {% if messages %}
-              <div class='alert alert-success'>
-                <ul class='flashes'>
-                   {% for message in messages %}
-                   <li>{{ message }}</li>
-                   {% endfor %}
-                </ul>
-                </div>
-             {% endif %}
-          {% endwith %}
-    </div>
     
 <section>
     <div class="container p-5">
@@ -35,7 +22,7 @@
                     </h6>
 
                     <form class="form custom-file rounded-pill mb-5" enctype="multipart/form-data" method="POST" action="{{url_for('process_upload_photos')}}">
-                        <input id="customFile" type="file" class="custom-file-input rounded-pill" name="image">
+                        <input required id="customFile" type="file" class="custom-file-input rounded-pill" name="image">
                         <label for="customFile" class="custom-file-label rounded-pill">Choose file</label>
                         <hr>
                         <label for="caption">Image Caption: </label>
@@ -45,6 +32,15 @@
                         <label for="tags">Tags: </label>
                         <br>
                         <input id="tags" type="textarea" name="tags" class="rounded-pill border border-info form-control" placeholder="#amazing (Come on, you know you want to hashtag this.)">        
+                        <br>
+                        <label for="album_selected">Select Album:</label>
+                        <select required id="album_selected" name="album_selected" class="rounded-pill border border-info form-control">        
+                        <option value="">Select an album to upload your photo to</option>
+                        {% for d in data %} {% if d['deleted'] == '0' %}
+                        <option value="{{ d['album_name'] }}">{{ d['album_name'] }}</option>
+                        {% endif %} {% endfor %}
+                        
+                        </select>
                         <br>
                         <hr>
                         <input class="btn btn-primary" type="submit" value="Upload">
@@ -62,32 +58,5 @@ $(".custom-file-input").on("change", function() {
   $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 });
 </script>
-
-
-<table style="width:100%">
-    <tr>
-        <th>Photo ID</th>
-        <th>Photo Name</th>
-        <th>Caption</th>
-        <th>Tags</th>
-        <th>Timestamp</th>
-        <th>File Type</th>
-        <th>File Size (In Megabytes)</th>
-        <th>Photo</th>
-        <th>Edit</th>
-    </tr>
-    {% for d in data %}
-    <tr>
-        <td>{{ d['_id'] }} </td>
-        <td>{{ d['image_name'] }}</td>
-        <td>{{ d['image_caption'] }}</td>
-        <td>{{ d['image_tags'] }}</td>
-        <td>{{ d['uploaded_on'] }}</td>
-        <td>{{ d['file_type'] }}</td>
-        <td>{{ d['file_size'] }} Mb </td>
-        <td><img id="thumbnail" src=" {{ d['image_url'] }} " /></td>
-    </tr>
-    {% endfor %}
-</table>
 
 {%endblock %}
