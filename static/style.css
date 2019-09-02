@@ -3,36 +3,16 @@ img#thumbnail {
     width: 60px;
 }
 
-/*
-*
-* ==========================================
-* CUSTOM UTIL CLASSES
-* ==========================================
-*
-*/
 
 .file-upload input[type='file'] {
   display: none;
 }
 
-/*Navbar*/
-.navcolor {
-  background-color: yellow
-}
 
-/*
-*
-* ==========================================
-* FOR DEMO PURPOSES
-* ==========================================
-*
-*/
 
 body {
-  background: #00B4DB;
-  background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);
-  background: linear-gradient(to right, #0083B0, #00B4DB);
-  height: 100vh;
+    height: 100vh;
+    background-image: url("/static/images/background.jpg");
 }
 
 .rounded-lg {
@@ -80,4 +60,8 @@ body {
         background: url("");
         background-size: cover;
     }
+}
+
+.footerdesign {
+    background-color: grey; 
 }
