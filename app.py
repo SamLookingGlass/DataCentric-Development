@@ -110,8 +110,9 @@ def process_edit_selected_photo(photoid):
         })
 
     flash("Successfully edited.")
-    return render_template("display_albums.html") #Bug Does not return to page displaying all albums   
-
+    results = db[ALBUMS].find({})
+    return render_template("display_albums.html", data = results) 
+    
 # Function to create album (Working)
 @app.route('/albums/create_album_form')
 def create_album():
@@ -165,14 +166,14 @@ def process_delete_album(albumid):
     return redirect(url_for('display_albums'))
 
 # Function to show delete confirmation page for photo (Currently)
-@app.route('/photo/<photoid>/confirm_delete')
+@app.route('/photo/confirm_delete/<photoid>')
 def display_delete_confirmation_photo(photoid):
     selected_photo = db[PHOTOS].find_one({"_id": ObjectId(photoid)})
     return render_template("delete_file.html", data = selected_photo)
     
     
 # Route to process the soft delete of photo (Currently)
-@app.route('/albums/<albumid>/delete')
+@app.route('/photos/delete/<photoid>')
 def process_delete_photo(albumid):
     selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
     db[ALBUMS].update(
