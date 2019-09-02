@@ -33,9 +33,8 @@
                         <br>
                         <input id="tags" type="textarea" name="tags" class="rounded-pill border border-info form-control" placeholder="#amazing (Come on, you know you want to hashtag this.)">        
                         <br>
-                        <label for="album_selected">Select Album:</label>
+                        <label for="album_selected">Select Upload Destination (Album Name):</label>
                         <select required id="album_selected" name="album_selected" class="rounded-pill border border-info form-control">        
-                        <option value="">Select an album to upload your photo to</option>
                         {% for d in data %} {% if d['deleted'] == '0' %}
                         <option value="{{ d['album_name'] }}">{{ d['album_name'] }}</option>
                         {% endif %} {% endfor %}

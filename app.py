@@ -97,7 +97,7 @@ def process_create_album():
     album_description = str(request.form.get('Album_Description'))
     db[ALBUMS].insert({
                 'created_on': timestamp(),
-                'album_name' : album_name,
+                'album_name' : str(album_name),
                 'album_description' : album_description,
                 'edited_on' : "Null",
                 'deleted': '0',
@@ -105,7 +105,6 @@ def process_create_album():
                 })
     flash("Album successfully created.")
     return redirect(url_for('display_albums'))
-
 
 
 # Function to show contents of selected album (Working)
@@ -150,7 +149,7 @@ def process_upload_photos():
     filesize = os.path.getsize(TOP_LEVEL_DIR + upload_dir + filename)
     caption = request.form.get('caption')
     tags = request.form.get('tags')
-    select = request.form.get('album_selected')
+    select = str(request.form.get('album_selected'))
     db[PHOTOS].insert({
         'image_url' : images_upload_set.url(filename),
         'image_name' : filename, 
