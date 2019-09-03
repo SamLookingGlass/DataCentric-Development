@@ -18,7 +18,7 @@ A live website of the application can be found here: https://tsw-photogallery.he
 6. Deployment
 7. Credits and Acknoledgement
 
-# 1. UX 
+# 1. User Experience (UX)
 #### (i) Project Strategy
 Following closely the objectives of an online photo album application (i.e. upload, store and organise photos online), these user goals were identified and served as guidelines for the features that were implemented.
 
@@ -72,7 +72,14 @@ The project uses Heroku for the deployment and management of the web application
 - Bulk uploading of files
 - Drag and drop files between albums
 
-# 4. Testing
+# 4. Testing (To be updated.)
+#### (i) HTML and CSS Validation
+
+#### (ii) Manual Testing - Test Cases
+
+#### (iii) Browser Compatability
+
+#### (iv) Mobile Responsive
 
 # 5. Known Bugs
 - Changing an album name in the application will cause the existing photos in the album to not be displayed when the album is selected. 
@@ -81,7 +88,14 @@ The project uses Heroku for the deployment and management of the web application
 - This bug is currently not fixed yet.
 
 # 6. Deployment
+#### (i) Deployment Steps Taken
+To be updated.
 
+#### (ii) Deployiny the code locally
+- The repository can be cloned using the following command on your terminal
+- `$ git clone https://samlookingglass.github.io/DataCentric-Development.git` 
+- To run the application, type in the following command on your terminal
+- `python3 app.py`
 
 # 7. Credits and Acknowledgement
 - Credited to Pexel.com for the photo used for uploading
