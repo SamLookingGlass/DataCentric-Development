@@ -54,7 +54,7 @@ def display_albums():
 # Route to show the page for uploading (Working)
 @app.route('/uploads')
 def display_uploads_page():
-    conn = pymongo.MongoClient(MONGO_URI)
+    #conn = pymongo.MongoClient(MONGO_URI)
     results = db[ALBUMS].find({})
     results1 = db[PHOTOS].find({})
     return render_template("uploads.html", data = results, photos = results1)    
@@ -234,8 +234,8 @@ def process_upload_photos():
     
 # "magic code" -- boilerplate
 if __name__ == '__main__':
-    app.secret_key = 'super secret key'
-    app.config['SESSION_TYPE'] = 'filesystem'
+    # app.secret_key = 'super secret key'
+    # app.config['SESSION_TYPE'] = 'filesystem'
     
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
