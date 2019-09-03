@@ -231,10 +231,12 @@ def process_upload_photos():
     flash("Image have been uploaded successfully.")    
     return redirect(url_for('display_uploads_page'))
     
-    
+
+# secret key
+app.secret_key = 'abc123'
+
 # "magic code" -- boilerplate
 if __name__ == '__main__':
-    app.secret_key = 'abc123'
     app.config['SESSION_TYPE'] = 'filesystem'
     
     app.run(host=os.environ.get('IP'),
