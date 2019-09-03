@@ -91,9 +91,9 @@ The project uses Heroku for the deployment and management of the web application
 #### (i) Deployment Steps Taken
 To be updated.
 
-#### (ii) Deployiny the code locally
+#### (ii) Deploying the code locally
 - The repository can be cloned using the following command on your terminal
-- `$ git clone https://samlookingglass.github.io/DataCentric-Development.git` 
+- `$ git clone https://github.com/SamLookingGlass/DataCentric-Development` 
 - To run the application, type in the following command on your terminal
 - `python3 app.py`
 
