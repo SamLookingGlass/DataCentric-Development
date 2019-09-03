@@ -49,7 +49,7 @@
   
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container d-flex justify-content-between">
-          <a href="{{ url_for('index') }}" class="navbar-brand d-flex align-items-center">
+          <a href="{{ url_for('index') }}" class="navbar-brand d-flex align-items-center" id="font2">
             <strong id="font2"><<i class="fa fa-camera-retro"></i>>Banarama.</strong>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +62,7 @@
 
     <main role="main">
     <!-- To show flashed messages -->
-    <div class="container" style="margin-top: 20px">
+    <div class="container" style="margin-top: 20px" id="font3">
         {% with messages = get_flashed_messages() %}
               {% if messages %}
               <div class='alert alert-success'>
@@ -78,13 +78,10 @@
           
       <section class="jumbotron text-center">
         <div class="container">
-          <!--<video autoplay muted loop>  -->
-          <!--  <source src="/static/videos/vidbackground.mp4">-->
-          <!--</video>-->
-          <h1 class="jumbotron-heading">Welcome to Banarama,</h1>
+          <h1 class="jumbotron-heading" id="font1">Welcome to Banarama,</h1>
           <img src="/static/images/shookethbanana.gif" alt="Logo" style="width:12vw; border-radius:20pt">
-          <p class="lead text-muted">To start, create a new album before uploading your photos.</p>
-          <p>
+          <p class="lead text-muted" id="font3">To start, create a new album before uploading your photos.</p>
+          <p id="font3">
             <a href='{{ url_for('create_album') }}' class="btn btn-warning my-2"><i class="fa fa-hand-peace-o"></i><br>Create an Album</a>
             <a href='{{ url_for('display_uploads_page') }}' class="btn btn-warning my-2"><i class="fa fa-cloud-upload"></i><br>Upload photos</a>
             <a href='{{ url_for('display_albums') }}' class="btn btn-warning my-2"><i class="fa fa-folder"></i><br>View Albums</a>
@@ -95,12 +92,12 @@
    
     </main>
     
-    <section> 
+    <section id="font3"> 
     {%block content %}{%endblock %}     
      
     </section>
 
-    <footer class="bg-dark fixed-bottom text-white">
+    <footer class="bg-dark fixed-bottom text-white" id="font1">
       <div class="container">
         <p class="float-right">
           <a href="#"><i class="fa fa-arrow-circle-up"></i> Back to top</a>

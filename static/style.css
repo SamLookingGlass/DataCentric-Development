@@ -1,11 +1,3 @@
-
-
-img#thumbnail {
-    height: 40px;
-    width: 60px;
-}
-
-
 /* Layout.html Styling */
 
 body {
@@ -40,9 +32,10 @@ body {
  font-family: 'Lobster', cursive;  
 }
 
-strong#font2 {
+#font2 {
  font-family: 'Pacifico', cursive;  
 }
+
 
 #font3 {
  font-family: 'Overpass', sans-serif;  

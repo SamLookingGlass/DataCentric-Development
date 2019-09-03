@@ -70,6 +70,19 @@ def process_edit_selected_album(albumid):
     album_name = request.form.get('Album_Name')
     album_description = request.form.get('Album_Description')
     
+    # original = db[ALBUMS].find({'album_name'})
+    
+    # db[ALBUMS].find({"vec.4" : {$exists : true}})
+    
+    # db[PHOTOS].update(
+    #     {'album_uploaded_to': original},
+    #     { '$set':
+    #         {
+    #             'album_uploaded_to': album_name,
+    #             'edited_on': timestamp(),
+    #         }
+    #     })
+        
     selected_album = db[ALBUMS].find_one({"_id": ObjectId(albumid)})
     db[ALBUMS].update(
         {'_id':ObjectId(albumid)},
@@ -79,7 +92,7 @@ def process_edit_selected_album(albumid):
                 'album_description': album_description,
                 'edited_on': timestamp(),
             }
-        })
+        })    
 
     flash("Successfully edited.")
     return redirect(url_for('display_albums', albumid = albumid))
@@ -207,7 +220,7 @@ def process_upload_photos():
         'image_caption' : caption,
         'image_tags' : tags,
         'uploaded_on' : timestamp(),
-        'deleted': 0,
+        'deleted': '0',
         'deleted_on' : "null",
         # Converts filesize to mb 3sf
         'file_size' : round((filesize/1000000),3),
