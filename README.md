@@ -38,7 +38,7 @@ Following closely the objectives of an online photo album application (i.e. uplo
 | User accidentally deletes album.| Deletion confirmation form to double check if user wants to continue with delete.|
 
 #### (ii) Project Scope
-The project skeleton and wireframes can be found here:
+The project skeleton and wireframes can be found [here](https://drive.google.com/open?id=1z7Cf3UGuxz3GL1wLHVTblkmvMhVvZSTd) 
 
 #### (iii) Design
 The bootstrap framework was used in for the front-end development of the website as it allows for mobile responsive design and easy grid layout. 
