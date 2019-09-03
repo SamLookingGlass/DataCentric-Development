@@ -16,7 +16,7 @@
               <img class="card-img-top" src="{{ p['image_url'] }}" alt="{{ p['image_name'] }}">
               <div class="card-body">
                 <h5 class="card-title">{{ p['image_name']}}</h5>
-                <p class="card-text">Caption:<br>{{ p['image_caption'] }} <small class="text-muted"><br>(Uploaded on: {{ p['uploaded_on'] }})</small></p>
+                <p class="card-text">{{ p['image_caption'] }}<br>{{ p['image_tag'] }}<small class="text-muted"><br>(Uploaded on: {{ p['uploaded_on'] }})</small></p>
                 <hr>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
