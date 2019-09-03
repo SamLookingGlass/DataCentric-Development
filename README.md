@@ -109,12 +109,15 @@ As the name of the web application suggests, 'Banarama', the colour palette and 
 | 25 | On the deletion conformation page, user clicks 'No', the URL should route back to 'https://tsw-photogallery.herokuapp.com/albums?albumid=5d6e567368755f885f7abe97' .| Pass |
 | 26 | On the deletion conformation page, user clicks 'Yes', the URL should route back to 'https://tsw-photogallery.herokuapp.com/albums?albumid=5d6e567368755f885f7abe97' . User should see a flash message 'Album: Test has been deleted' and the album card removed from the 'View albums' page.| Pass |
 
-#### (iii) Cross Browser Compatability
-
+#### (iii) Cross Browser Compatibility
+- A cross browser compatability test was conducted using http://browsershots.org/https://tsw-photogallery.herokuapp.com/.
+- The website was tested on 54 web browsers.
+- Screenshots of the test can be found [here.](https://drive.google.com/file/d/1l8FWJ41MJbqagcnafS677GS9hKvUtq3g/view?usp=sharing)
+- Not compatible with Lynx 2.8.8 Ubuntu 12.04 LTS, Rekonq 1.1 Ubuntu 9.10 and Dillo 3.0.2 Ubuntu 9.10
 
 #### (iv) Mobile Responsiveness
-| Device	| Screen Size (Width x Height)	| Results|
-| ------ | ------ | ------ |
+- The test results can be found [here.](https://search.google.com/test/mobile-friendly?id=xg6pnaXTpSjm908GkfInDQ)
+- The web application is mobile responsive
 
 # 5. Known Bugs
 - Changing an album name in the application will cause the existing photos in the album to not be displayed when the album is selected. 
@@ -133,6 +136,6 @@ To be updated.
 - `python3 app.py`
 
 # 7. Credits and Acknowledgement
-- Credited to Pexel.com for the photo used for uploading
+- Credited to Pexel.com for the photos used for uploading
 - Credits to [Smiling Banana photo](https://www.msn.com/en-in/health/nutrition/why-you-should-never-eat-bananas-for-breakfast/ar-BBOoNFc) 
 - Credits to Giphy.com for the .gifs used for on the website
