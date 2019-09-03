@@ -49,23 +49,23 @@ As the name of the web application suggests, 'Banarama', the colour palette and 
 
 # 2. Technologies Used
 * [HTML 5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
-: The project uses HTML5 to structure the content of the website.
+<br> The project uses HTML5 to structure the content of the website.
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
-: The project uses CSS to add stylistic touches to the website.
+<br> The project uses CSS to add stylistic touches to the website.
 * [Bootstrap](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
-: The project uses Bootstrap to structure the layout of the website (i.e. Navbar, Footer) and ensure website is mobile responsiveness.
+<br> The project uses Bootstrap to structure the layout of the website (i.e. Navbar, Footer) and ensure website is mobile responsiveness.
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/)
-: The project uses the Flask web framework to develop the web application (i.e. Set up connection to MongoDB Atlas, process and validate forms and handle the uploading of files)  
+<br> The project uses the Flask web framework to develop the web application (i.e. Set up connection to MongoDB Atlas, process and validate forms and handle the uploading of files)  
 * [Jinja 2](https://jinja.palletsprojects.com/en/2.10.x/)
-: The project uses Jinja2 to write conditional statements to display content blocks when  certain conditions are met. Additionally, Jinja2 was used to set up template inherritance and extension of html/css files for the project.
+<br> The project uses Jinja2 to write conditional statements to display content blocks when  certain conditions are met. Additionally, Jinja2 was used to set up template inherritance and extension of html/css files for the project.
 * [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-: The project uses MongoDB Atlas as a cloud database to store user data and file uploads.
+<br> The project uses MongoDB Atlas as a cloud database to store user data and file uploads.
 * [GoogleFonts](https://fonts.google.com/)
-: The project uses GoogleFonts to style the typography on the website to enhance the visual experience of users.  
+<br> The project uses GoogleFonts to style the typography on the website to enhance the visual experience of users.  
 * [FontAwesome 4.7](https://fontawesome.com/v4.7.0/)
-: The project uses the icons provided by FontAwesome 4.7 alongside call-to-action buttons to enhance the user experience by making user interaction with the application more intuitive. 
+<br> The project uses the icons provided by FontAwesome 4.7 alongside call-to-action buttons to enhance the user experience by making user interaction with the application more intuitive. 
 * [Heroku](https://www.heroku.com/) 
-: The project uses Heroku for the deployment and management of the web application. As Heroku provides timelogs, when an error occurs, it makes easier to identity and remedy bugs.  
+<br> The project uses Heroku for the deployment and management of the web application. As Heroku provides timelogs, when an error occurs, it makes easier to identity and remedy bugs.  
 
 # 3. Future Features To Implement
 - A feature for users to drag and drop files for uploads
@@ -126,14 +126,42 @@ As the name of the web application suggests, 'Banarama', the colour palette and 
 - This bug is currently not fixed yet.
 
 # 6. Deployment
-#### (i) Deployment Steps Taken
-To be updated.
+#### (i) Development Process
+- All codes was written on AWS Cloud9 and codes were saved and tested locally. 
+- Regular committing and pushing of codes to GitHub ensured that changes to codes can be tracked and allows for version control maintainence.
+- Heroku was set up first before embarking on code development.   
 
-#### (ii) Deploying the code locally
+#### (ii) Heroku Deployment Steps
+- Login to Heroku on your command-line interface 
+<br>`$ heroku login`
+- On your command-line interface create the Heroku application 
+<br>`$ heroku create tsw-photogallery` 
+- Once application has been created, Heroku automatically sets up a remote git repository
+<br>`Creating app... done` 
+- Next, create a local git repository on your command-line interface
+<br>`$ git init`
+<br>`$ git add .`
+<br>`$ git commit -m "first commit"`
+- Then, connect this local git repository to the remote git repository set up on Heroku
+<br>`$ heroku git:remote -a tsw-photogallery`
+- Check if the remote repository has been linked properly
+`<br>$ git remote -v`
+- Prepare the following application files for deployment in the application root directory
+<br>1. Procfile
+<br> Copy and paste this line of `web: gunicorn run:app` into the Procfile. 
+<br>2. requirements.txt
+<br>`pip freeze --local > requirement.txt` 
+- Then, add the new configuration files to your local repository:
+<br>`$ git add . `
+<br>`$ git commit -a -m "Add configuration files"` 
+- Last, make an initial deployment of the application to Heroku
+<br>`$ git push heroku master`
+
+#### (iii) How to deploying the project locally
 - The repository can be cloned using the following command on your terminal
-- `$ git clone https://github.com/SamLookingGlass/DataCentric-Development` 
+<br> `$ git clone https://github.com/SamLookingGlass/DataCentric-Development` 
 - To run the application, type in the following command on your terminal
-- `python3 app.py`
+<br> `python3 app.py`
 
 # 7. Credits and Acknowledgement
 - Credited to Pexel.com for the photos used for uploading
