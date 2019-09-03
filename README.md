@@ -1,16 +1,15 @@
+# Data-centric Development Milestone Project – 'Banarama' 
 
+# Context
 
-# Data-centric Development Milestone Project – 'Banarama' Photo Album
-
-### Context
 This project focuses on the data-centric development for a mobile-responsive web-based photo album application called ‘Banarama’. From the get-go, users can create albums, upload their photos on this application and then share their albums with anyone. 
 
 The application does not require users to create an account. Users can choose to upload their photos into a default album called ‘Uploads’ or create their own albums.
 
-### Demo
+# Demo
 A live website of the application can be found here: https://tsw-photogallery.herokuapp.com/
 
-### Index
+# Index
 1. UX
 2. Technologies Used
 3. Future Features To Implement
@@ -19,7 +18,7 @@ A live website of the application can be found here: https://tsw-photogallery.he
 6. Deployment
 7. Credits and Acknoledgement
 
-### UX 
+# 1. UX 
 #### (i) Project Strategy
 Following closely the objectives of an online photo album application (i.e. upload, store and organise photos online), these user goals were identified and served as guidelines for the features that were implemented.
 
@@ -48,24 +47,43 @@ As the name of the web application suggests, 'Banarama', the colour palette and 
 
 ![#ffe261](https://placehold.it/15/ffe261/000000?text=+) `#ffe261` ![#733214](https://placehold.it/15/733214/000000?text=+) `#733214` ![#363531](https://placehold.it/15/363531/000000?text=+) `#363531` ![#10913f](https://placehold.it/15/10913f/000000?text=+) `#10913f` ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `#f03c15`
 
-### Technologies Used
-1. [HTML 5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+# 2. Technologies Used
+* [HTML 5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 The project uses HTML5 to structure the content of the website.
-2. [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 The project uses CSS to add stylistic touches to the website.
-3. [Bootstrap](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
+* [Bootstrap](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
 The project uses Bootstrap to structure the layout of the website (i.e. Navbar, Footer) and ensure website is mobile responsiveness.
-4. [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
 The project uses the Flask web framework to develop the web application (i.e. Set up connection to MongoDB Atlas, process and validate forms and handle the uploading of files)  
-5. [Jinja 2](https://jinja.palletsprojects.com/en/2.10.x/)
+* [Jinja 2](https://jinja.palletsprojects.com/en/2.10.x/)
 The project uses Jinja2 to write conditional statements to display content blocks when  certain conditions are met. Additionally, Jinja2 was used to set up template inherritance and extension of html/css files for the project.
-4. [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+* [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
 The project uses MongoDB Atlas as a cloud database to store user data and file uploads.
-5. [GoogleFonts](https://fonts.google.com/)
+* [GoogleFonts](https://fonts.google.com/)
 The project uses GoogleFonts to style the typography on the website to enhance the visual experience of users.  
-6. [FontAwesome 4.7](https://fontawesome.com/v4.7.0/)
+* [FontAwesome 4.7](https://fontawesome.com/v4.7.0/)
 The project uses the icons provided by FontAwesome 4.7 alongside call-to-action buttons to enhance the user experience by making user interaction with the application more intuitive. 
-7. [Heroku](https://www.heroku.com/) 
+* [Heroku](https://www.heroku.com/) 
 The project uses Heroku for the deployment and management of the web application. As Heroku provides timelogs, when an error occurs, it makes easier to identity and remedy bugs.  
 
+# 3. Future Features To Implement
+- A feature for users to drag and drop files for uploads
+- Bulk uploading of files
+- Drag and drop files between albums
 
+# 4. Testing
+
+# 5. Known Bugs
+- Changing an album name in the application will cause the existing photos in the album to not be displayed when the album is selected. 
+- As such it is recommended that users not edit an album's name after images have been uploaded into it.
+- As the database is a non-relational one, a change to the album name (i.e. User editing the album name) will only update the 'album' collection on MongoDB Atlas. - There is another collection called 'images' where the image's field 'uploaded_to' need to be updated as with new album's name as well.
+- This bug is currently not fixed yet.
+
+# 6. Deployment
+
+
+# 7. Credits and Acknowledgement
+- Credited to Pexel.com for the photo used for uploading
+- Credits to [Smiling Banana photo](https://www.msn.com/en-in/health/nutrition/why-you-should-never-eat-bananas-for-breakfast/ar-BBOoNFc) 
+- Credits to Giphy.com for the .gifs used for on the website
