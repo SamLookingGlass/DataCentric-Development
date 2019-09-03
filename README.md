@@ -38,7 +38,7 @@ Following closely the objectives of an online photo album application (i.e. uplo
 | User accidentally deletes album.| Deletion confirmation form to double check if user wants to continue with delete.|
 
 #### (ii) Project Scope
-The project skeleton and wireframes can be found [here](https://drive.google.com/open?id=1z7Cf3UGuxz3GL1wLHVTblkmvMhVvZSTd) 
+The project skeleton and structure (wireframes) can be found [here.](https://drive.google.com/open?id=1z7Cf3UGuxz3GL1wLHVTblkmvMhVvZSTd) 
 
 #### (iii) Design
 The bootstrap framework was used in for the front-end development of the website as it allows for mobile responsive design and easy grid layout. 
@@ -72,14 +72,31 @@ The project uses Heroku for the deployment and management of the web application
 - Bulk uploading of files
 - Drag and drop files between albums
 
-# 4. Testing (To be updated.)
+# 4. Testing
 #### (i) HTML and CSS Validation
+- Code from style.css was validated on http://csslint.net/ (No errors)
+- Codes from the .html files were validated on https://www.freeformatter.com/html-validator.html (No errors)
 
-#### (ii) Manual Testing - Test Cases
+#### (ii) Manual Testing 
+| Test Case Number| Test Case Description| Results|
+| ------ | ------ | ------ |
+| 1 | On the landing page (https://tsw-photogallery.herokuapp.com), user should see 3 buttons on the landing page (i.e. 'Create an Album', 'Upload photos', and 'View Albums'). | Pass |
+| 2 | When user clicks on 'Create an Album', the URL routes to https://tsw-photogallery.herokuapp.com/albums/create_album_form | Pass |
+| 3 | When user clicks on 'Create an Album', a form is generated in the lower half of the screen and has 2 user input fields ('album name' and 'album description') and 2 buttons ('Create' and 'Back'). | Pass |
+| 4 | On https://tsw-photogallery.herokuapp.com/albums/create_album_form, user inputs 'Test' as the album name and 'Test uploads' as the album description and clicks 'Create'. The URL routes to https://tsw-photogallery.herokuapp.com/albums. A flash message 'Album successfully create.' pops up in the upper section of screen. A 'Test' album is added to the page. | Pass |
+| 5 | On https://tsw-photogallery.herokuapp.com/albums/create_album_form, user clicks on 'Back'. The URL routes to https://tsw-photogallery.herokuapp.com/albums. | Pass |
+| 6 | When user clicks on 'Upload Photos', the URL routes to https://tsw-photogallery.herokuapp.com/uploads | Pass |
+| 7 | When user clicks on 'Upload Photos', a form is generated in the lower half of the screen and has 4 user input fields ('choose file', 'image caption', 'tags', and 'select upload destination') and 1 buttons ('Upload'). | Pass |
+| 8 | On the upload form, when user clicks on 'Browse', a file-directory pops-up and prompts user to select a file for uploading.| Pass |
+| 9 | On the upload form, When user clicks on 'Select Upload Destination', a dropdown list of albums names appears and is selectable.| Pass |
+| 10 | On the upload form, user selects a test image "Capture.PNG" from his local directory, inputs "Test photo" as the image caption, "#test" as the tag and selects 'Test' as the album upload destination. User clicks 'Upload'. Page refreshes and user should see a flash message 'Image has been uploaded successfully' if image upload has been successful.| Pass |
+
 
 #### (iii) Browser Compatability
 
-#### (iv) Mobile Responsive
+#### (iv) Mobile Responsiveness
+| Device	| Screen Size (Width x Height)	| Results|
+| ------ | ------ | ------ |
 
 # 5. Known Bugs
 - Changing an album name in the application will cause the existing photos in the album to not be displayed when the album is selected. 
