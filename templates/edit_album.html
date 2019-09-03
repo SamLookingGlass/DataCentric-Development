@@ -10,12 +10,12 @@
           <a href="{{ url_for('display_albums', albumid=data['_id']) }}" class='btn btn-primary'>Back</a>
           <hr>
           <div class='form-group'>
-            <label class='Album_Name '>Album Name:</label>
+            <label class='Album_Name text-light'>Album Name:</label>
             <input type='text' class='form-control' name='Album_Name' value="{{ data['album_name'] }}" />
           </div>
 
           <div class='form-group'>
-            <label class='Album_Description '>Album Description:</label>
+            <label class='Album_Description text-light'>Album Description:</label>
             <textarea class='form-control' name='Album_Description'>{{data['album_description']}}</textarea>
           </div>
 

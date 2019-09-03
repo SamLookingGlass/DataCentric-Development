@@ -2,11 +2,12 @@
 
 {%block content %}
 
+
   <div class="container-fluid" style="margin-bottom: 50px">
     <div class="row content">
 
       <div class="col-sm-12">
-        <form class="form"  method='POST'>
+        <form class="form text-light"  method='POST'>
           <input type='submit' value='Create' class='btn btn-primary'/>
           <a href="{{ url_for('display_albums') }}" class='btn btn-primary'>Back</a>
           <hr>
@@ -26,5 +27,8 @@
       </div>
     </div>
   </div>
+  
+{% endblock %}
 
-{%endblock %}
+
+          
