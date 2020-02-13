@@ -157,7 +157,7 @@ As the name of the web application suggests, 'Banarama', the colour palette and 
 - Last, make an initial deployment of the application to Heroku
 <br>`$ git push heroku master`
 
-#### (iii) How to deploying the project locally
+#### (iii) How to deploy the project locally
 - The repository can be cloned using the following command on your terminal
 <br> `$ git clone https://github.com/SamLookingGlass/DataCentric-Development` 
 - To run the application, type in the following command on your terminal
